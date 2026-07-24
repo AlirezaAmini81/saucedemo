@@ -1,16 +1,18 @@
+const defaultPassword = process.env.E2E_PASSWORD ?? 'secret_sauce';
+
 export const users = {
   standard: {
-    username: 'standard_user',
-    password: 'secret_sauce',
+    username: process.env.E2E_USERNAME ?? 'standard_user',
+    password: defaultPassword,
   },
   lockedOut: {
     username: 'locked_out_user',
-    password: 'secret_sauce',
+    password: defaultPassword,
   },
 } as const;
 
 export const checkoutCustomer = {
-  firstName: 'Alex',
-  lastName: 'Tester',
-  postalCode: '12345',
+  firstName: 'Jordan',
+  lastName: 'Lee',
+  postalCode: '10001',
 } as const;

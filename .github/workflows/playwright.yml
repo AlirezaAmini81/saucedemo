@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: End-to-End Tests
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - name: Check out repository
@@ -26,8 +26,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Type-check project
+        run: npm run typecheck
+
+      - name: Run end-to-end tests
+        run: npm test
 
       - name: Upload HTML report
         if: ${{ !cancelled() }}
